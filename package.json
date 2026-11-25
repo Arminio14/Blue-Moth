@@ -1,0 +1,49 @@
+{
+  "name": "blue-moth",
+  "version": "1.5.0",
+  "description": "Blue Moth \u2013 repaired app launching and game library",
+  "main": "main.cjs",
+  "author": "Blue Moth",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis portable --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "^39.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "app.bluemoth.launcher",
+    "productName": "Blue Moth",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "index.html",
+      "style.css",
+      "renderer.js",
+      "assets/**/*",
+      "package.json",
+      "player.html",
+      "player.js"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/moth_icon.png",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "artifactName": "Blue-Moth-${version}-${arch}.${ext}"
+  }
+}

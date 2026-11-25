@@ -1,0 +1,46 @@
+<!doctype html><html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blue Moth</title><link rel="stylesheet" href="style.css"></head><body class="locked">
+<div class="splash" id="splash"><img src="assets/splash.png" alt="Blue Moth"></div>
+
+<section class="auth" id="auth">
+  <div class="authCard">
+    <img src="assets/moth_icon.png" alt="" class="authLogo">
+    <h1>Blue <b>Moth</b></h1>
+    <p id="authHint" class="authHint">Melde dich an, um deine Bibliothek zu öffnen.</p>
+    <div class="authTabs"><button type="button" class="tab active" id="tabLogin">Anmelden</button><button type="button" class="tab" id="tabRegister">Registrieren</button></div>
+    <form id="authForm" autocomplete="on">
+      <label>Benutzername<input id="authUser" required minlength="3" maxlength="30" autocomplete="username"></label>
+      <label>Passwort<input id="authPass" type="password" required minlength="3" autocomplete="current-password"></label>
+      <label id="pass2Row" hidden>Passwort wiederholen<input id="authPass2" type="password" autocomplete="new-password"></label>
+      <p id="authMsg" class="authMsg" role="alert"></p>
+      <button class="primary wide" id="authSubmit">Anmelden</button>
+    </form>
+    <div class="or"><span>oder</span></div>
+    <button type="button" class="secondary wide" id="googleBtn">Mit Google anmelden</button>
+    <button type="button" class="secondary wide" id="creatorBtn">👑 Creator-Zugang</button>
+    <button type="button" class="linkBtn" id="googleSetup">Google einrichten</button>
+    <p class="authNote">Konten gelten nur auf diesem PC. Es gibt keine Passwort-Wiederherstellung.</p>
+  </div>
+</section>
+
+<header><div class="brand"><img src="assets/moth_icon.png" alt=""><span>Blue <b>Moth</b></span></div>
+  <div class="userbox"><span id="userName"></span><button class="secondary small" id="linkGoogle" hidden>Google verknüpfen</button><button class="secondary small" id="logout">Abmelden</button></div></header>
+<main><section class="hero"><div><p class="eyebrow">YOUR PERSONAL APP SPACE</p><h1>Alles an <span>einem Ort.</span></h1><p>Web-Apps, Windows-Programme, PC-Spiele und Retro-Spiele.</p></div><img src="assets/moth_icon.png" alt="Blue Moth"></section>
+<section class="toolbar"><div><h2>Meine Sammlung</h2><p id="count">0 Einträge</p></div><div class="actions"><button id="addUrl" class="secondary">＋ Webadresse</button><button id="addExe" class="secondary">＋ Programm (EXE)</button><button id="addPc" class="secondary">＋ PC-Spiel / Verknüpfung</button><button id="addGame" class="primary">＋ Retro-Spiel / ROM</button></div></section>
+<nav><button class="tab active" data-filter="all">Alle</button><button class="tab" data-filter="web">Web-Apps</button><button class="tab" data-filter="app">Programme</button><button class="tab" data-filter="pcgame">PC-Spiele</button><button class="tab" data-filter="game">Retro-Spiele</button></nav>
+<section id="grid" class="grid"></section><p id="empty" class="empty">Noch nichts hinzugefügt. Nutze eine der Schaltflächen oben.</p>
+<p class="warning"><b>Sicherheit:</b> EXE-Dateien, Verknüpfungen und Skripte können beliebigen Code ausführen. Füge nur Dateien aus vertrauenswürdigen Quellen hinzu. Blue Moth prüft sie nicht auf Schadsoftware.</p>
+<p class="note">Retro-Spiele laufen im eingebauten Player (EmulatorJS). Der Emulator-Kern wird beim Spielen aus dem Internet geladen. Verwende nur Spiele/ROMs, die du rechtmäßig nutzen darfst.</p>
+</main>
+
+<dialog id="urlDialog"><form id="urlForm"><h2>Web-App hinzufügen</h2><label>Name<input id="urlName" required maxlength="60" placeholder="z. B. Schulportal"></label><label>Webadresse<input id="urlValue" type="url" required placeholder="https://example.com"></label><p>Tipp: Internet-Verknüpfungen (.url) kannst du über „PC-Spiel / Verknüpfung“ importieren.</p><div class="dialogActions"><button type="button" class="secondary close">Abbrechen</button><button class="primary">Hinzufügen</button></div></form></dialog>
+
+<dialog id="emulatorDialog"><form id="emulatorForm" onsubmit="return false"><h2>Spiel starten</h2><code id="gameName"></code>
+<label>System<select id="systemSelect"></select></label>
+<div class="dialogActions wrap"><button type="button" class="secondary close">Abbrechen</button><button type="button" id="chooseEmulator" class="secondary">Externer Emulator …</button><button type="button" id="playBuiltin" class="primary">▶ Spielen</button></div></form></dialog>
+
+<dialog id="googleDialog"><form id="googleForm"><h2>Google einrichten</h2>
+<p>Für „Mit Google anmelden“ brauchst du eine eigene, kostenlose OAuth-Client-ID: <a href="https://console.cloud.google.com/apis/credentials" target="_blank">Google Cloud Console</a> → „OAuth-Client-ID erstellen“ → Anwendungstyp <b>Desktop-App</b>. Trage die beiden Werte hier ein.</p>
+<label>Client-ID<input id="gId" required autocomplete="off"></label><label>Client-Secret<input id="gSecret" type="password" required autocomplete="off"></label>
+<div class="dialogActions"><button type="button" class="secondary close">Abbrechen</button><button class="primary">Speichern</button></div></form></dialog>
+
+<div id="toast" role="status"></div><footer>BLUE MOTH <span>✦</span> YOUR APPS, YOUR SPACE</footer><script src="renderer.js"></script></body></html>
